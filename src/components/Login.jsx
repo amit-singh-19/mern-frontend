@@ -10,6 +10,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      setError("Please wait...")
       const url = `${API_URL}/api/users/login`;
       const response = await axios.post(url, user);
       console.log(response)

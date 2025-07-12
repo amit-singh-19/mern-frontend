@@ -1,5 +1,5 @@
 body {
-  background: #f2f2f2
+  background: #f2f2f2;
 }
 
 .login-container {
@@ -19,14 +19,14 @@ body {
 .login-container h1 {
   margin: 0 0 1.5rem;
   padding: 0;
-  color: royalblue;
+  color: rgb(16, 137, 211);
   text-align: center;
 }
 
 .login-container .error {
-    color: grey;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+  color: black;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
 }
 
 .login-container .input-field {
@@ -36,8 +36,9 @@ body {
 .login-container .input-field input {
   width: 100%;
   padding: 0.6rem 0;
+  padding-left: 0.2rem;
   font-size: 1rem;
-  color: grey;
+  color: rgb(35, 35, 35);
   margin-bottom: 1.8rem;
   border: none;
   border-bottom: 1px solid grey;
@@ -60,7 +61,7 @@ body {
 .login-container .input-field input:valid ~ label {
   top: -20px;
   left: 0;
-  color: grey;
+  color: rgb(16, 137, 211);
   font-size: 0.8rem;
 }
 
@@ -71,30 +72,42 @@ body {
   font-weight: 600;
   letter-spacing: 4px;
   color: #fff;
-  padding: 0.6rem 1.5rem;
-  margin: 1.2rem 0;
+  padding: 0.8rem 1.5rem;
+  margin: 1rem 0;
   border: none;
-  background: royalblue;
-  border-radius: 0.5rem;
+  background: linear-gradient(
+    45deg,
+    rgb(16, 137, 211) 0%,
+    rgb(18, 177, 209) 100%
+  );
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+  border-radius: 1rem;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 
 .login-container button:hover {
-  background-color: rgb(22, 66, 197);
+  transform: scale(1.03);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
 }
 
-.login-container p{
-    color: grey;
-    font-size: 0.8rem;
-    margin: 0.5rem 0 1rem;
-    text-align: center;
+.login-container button:active {
+  transform: scale(0.95);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+}
+
+.login-container p {
+  color: grey;
+  font-size: 0.8rem;
+  margin: 0.5rem 0 1rem;
+  text-align: center;
 }
 
 .login-container p .register-link {
-    text-decoration: none;
-    color: royalblue;
+  text-decoration: none;
+  color: #0099ff;
 }
 
 .login-container p .register-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

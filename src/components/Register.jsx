@@ -9,8 +9,10 @@ export default function Register() {
   const API_URL = import.meta.env.VITE_API_URL;
   const Navigate = useNavigate();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
+      setError("Please wait...")
       const url = `${API_URL}/api/users/register`;
       await axios.post(url, user);
       setError("Data saved successfully");
@@ -24,7 +26,7 @@ export default function Register() {
     <div className="register-container">
       <h1 className="title">Register</h1>
       <p className="error">{error}</p>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="name-field">
           <div className="input">
             <input
@@ -60,9 +62,9 @@ export default function Register() {
           />
           <label htmlFor="firstname">Password </label>
         </div>
-        <button onClick={handleSubmit}>Register</button>
+        <button type="submit">Register</button>
         <p>
-          Already have account? <Link to="/login" className="login-link">Create Account</Link>
+          Already have account? <Link to="/login" className="login-link">Sign in</Link>
         </p>
       </form>
     </div>
