@@ -1,0 +1,117 @@
+.register-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 90%;
+  padding: 2.5rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+}
+
+.register-container h1 {
+  text-align: center;
+  color: royalblue;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.register-container .error {
+  color: grey;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.register-container .name-field {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  gap: 1rem;
+}
+
+.register-container .name-field .input {
+  flex: 1;
+}
+
+.name-field .input input {
+  width: 100%;
+}
+
+.register-container .input {
+  position: relative;
+}
+
+.register-container .input input {
+  width: 100%;
+  padding: 0.8rem 0;
+  padding-left: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: grey;
+  border: 1px solid grey;
+  border-radius: 0.6rem;
+  background: none;
+}
+
+.register-container .input label {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: gray;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.register-container .input input:focus,
+.register-container .input input:valid {
+  outline: none;
+  border: 1px solid grey;
+}
+
+.register-container .input input:focus ~ label,
+.register-container .input input:valid ~ label {
+  transform: translateY(-50%) scale(0.8);
+  color: grey;
+  padding: 0 0.2em;
+  background-color: #fff;
+}
+
+.register-container button {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  margin-bottom: 1.2rem;
+  border: none;
+  background: royalblue;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.register-container button:hover {
+  background-color: rgb(22, 66, 197);
+}
+
+.register-container p {
+  color: grey;
+  font-size: 0.8rem;
+  margin: 0.5rem 0 1rem;
+  text-align: center;
+}
+
+.register-container p .login-link {
+  text-decoration: none;
+  color: royalblue;
+}
+
+.register-container p .login-link:hover{
+    text-decoration: underline;
+}

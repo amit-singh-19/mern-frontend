@@ -1,0 +1,100 @@
+body {
+  background: #f2f2f2
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 400px;
+  width: 90%;
+  padding: 2.5rem;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+}
+
+.login-container h1 {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  color: royalblue;
+  text-align: center;
+}
+
+.login-container .error {
+    color: grey;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-container .input-field {
+  position: relative;
+}
+
+.login-container .input-field input {
+  width: 100%;
+  padding: 0.6rem 0;
+  font-size: 1rem;
+  color: grey;
+  margin-bottom: 1.8rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  outline: none;
+  background: transparent;
+}
+
+.login-container .input-field label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.4rem 0;
+  font-size: 1rem;
+  color: grey;
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+.login-container .input-field input:focus ~ label,
+.login-container .input-field input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: grey;
+  font-size: 0.8rem;
+}
+
+.login-container button {
+  width: 100%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  margin: 1.2rem 0;
+  border: none;
+  background: royalblue;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: rgb(22, 66, 197);
+}
+
+.login-container p{
+    color: grey;
+    font-size: 0.8rem;
+    margin: 0.5rem 0 1rem;
+    text-align: center;
+}
+
+.login-container p .register-link {
+    text-decoration: none;
+    color: royalblue;
+}
+
+.login-container p .register-link:hover {
+    text-decoration: underline;
+}
