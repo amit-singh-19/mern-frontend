@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import App, { AppContext } from "../App";
 
 export default function Login() {
-  const [user, setUser] = useState({});
+  const { user, setUser } = useContext(AppContext);
   const [error, setError] = useState();
   const API_URL = import.meta.env.VITE_API_URL;
+  const Navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      setError("Please wait...")
+      setError("Please wait...");
       const url = `${API_URL}/api/users/login`;
       const response = await axios.post(url, user);
-      console.log(response)
+      // console.log(response);
+      setUser(response.data);
       setError("Login successfully");
+      Navigate("/");
     } catch (error) {
-      setError(`Error: ${error.message}`);
+      console.log(error);
+      setError(`Error: Something went wrong`);
     }
   };
   return (
@@ -43,7 +48,10 @@ export default function Login() {
           </div>
           <button type="submit">Login</button>
           <p>
-            Don't have an account? <Link to="/register" className="register-link">Create Account</Link>
+            Don't have an account?{" "}
+            <Link to="/register" className="register-link">
+              Create Account
+            </Link>
           </p>
         </form>
       </div>
