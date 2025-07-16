@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+import "./Product.css";
 
 export default function Product() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -24,29 +25,41 @@ export default function Product() {
   }, []);
 
   const addToCart = (product) => {
-    product.qty = 1;
-    setCart([...cart, product]);
-    console.log(cart);
+    const found = cart.find((item) => item._id === product._id);
+    if (!found) {
+      product.qty = 1;
+      setCart([...cart, product]);
+      console.log(cart);
+    }
   };
 
   return (
-    <>
+    <div className="product-grid">
       {products &&
         products.map((product) => (
-          <div key={product._id}>
-            <img src={`product.imgUrl`} alt="img1" />
-            <h3>{product.productName}</h3>
-            <p>{product.description}</p>
-            <h4>₹{product.price}</h4>
-            <button
-              onClick={() => {
-                addToCart(product);
-              }}
-            >
-              Add to Cart
-            </button>
+          <div key={product._id} className="product-card">
+            <div className="product-image">
+              <img src={product.imgUrl} alt="img" width="200" />
+            </div>
+            <div className="product-name">
+              <h3>{product.productName}</h3>
+            </div>
+            <div className="product-description">
+              <p>{product.description}</p>
+            </div>
+            <div className="product-footer">
+              <span className="product-price">₹{product.price}</span>
+              <button
+                onClick={() => {
+                  addToCart(product);
+                }}
+                className="add-to-cart"
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         ))}
-    </>
+    </div>
   );
 }
