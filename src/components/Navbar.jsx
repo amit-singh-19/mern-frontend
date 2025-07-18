@@ -5,7 +5,7 @@ import App, { AppContext } from "../App";
 
 export default function Navbar() {
   const { user } = useContext(AppContext);
-  console.log(user);
+  // console.log(user);
   return (
     <div className="navbar">
       <div className="list-item">

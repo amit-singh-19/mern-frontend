@@ -13,7 +13,7 @@ export default function Product() {
     try {
       const url = `${API_URL}/api/products/all`;
       const result = await axios.get(url);
-      console.log(result);
+      // console.log(result);
       setProducts(result.data.products);
     } catch (error) {
       console.log(error);
@@ -29,7 +29,7 @@ export default function Product() {
     if (!found) {
       product.qty = 1;
       setCart([...cart, product]);
-      console.log(cart);
+      // console.log(cart);
     }
   };
 

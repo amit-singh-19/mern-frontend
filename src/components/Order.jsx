@@ -1,23 +1,60 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useContext } from 'react';
-import { AppContext } from '../App';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 export default function Order() {
   const API_URL = import.meta.env.VITE_API_URL;
   const [error, setError] = useState();
-  const {user} = useContext(AppContext);
-  const fetchOrders = async (params) => {
+  const [orders, setOrders] = useState([]);
+  const { user } = useContext(AppContext);
+
+  const fetchOrders = async () => {
     try {
-      const [orders, setOrders] = useState([]);
-    const url = `${API_URL}/api/orders/${user._id}`
-    const result = axios.get(url);
+      const url = `${API_URL}/api/orders/${user.user.email}`;
+      const result = await axios.get(url);
+      // console.log(result);
+      setOrders(result.data);
     } catch (error) {
       console.log(error);
-      setError ("Something went wrong");     
+      setError("Something went wrong");
     }
-  }
+  };
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
   return (
-    <div>Order</div>
-  )
+    <div>
+      <h3>My Orders</h3>
+      <p>{error}</p>
+      {orders &&
+        orders.map((order) => (
+          <div>
+            <p>OrderId:{order._id}</p>
+            <p>Order Value: {order.orderValue} </p>
+            <p>Status:{order.status}</p>
+            <table border="1">
+              <thead>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </thead>
+              {order.items.map((item) => (
+                <tbody key={item._id}>
+                  <tr>
+                    <td>{item.productName}</td>
+                    <td>{item.price}</td>
+                    <td>{item.qty}</td>
+                    <td>{item.qty * item.price}</td>
+                  </tr>
+                </tbody>
+              ))}
+            </table>
+            <hr />
+          </div>
+        ))}
+    </div>
+  );
 }

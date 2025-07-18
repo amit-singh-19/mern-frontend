@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import axios from "axios";
+import { AppContext } from "../App";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
+  const { user } = useContext(AppContext);
   const [error, setError] = useState();
   const frmRef = useRef();
   const [form, setForm] = useState({
@@ -24,7 +26,11 @@ export default function Users() {
   const handleDelete = async (id) => {
     try {
       const url = `${API_URL}/api/users/${id}`;
-      await axios.delete(url);
+      await axios.delete(url, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       setError("User deleted successfully");
       fetchUsers();
     } catch (error) {
@@ -36,7 +42,11 @@ export default function Users() {
     try {
       setError("Loading...");
       const url = `${API_URL}/api/users/?page=${page}&limit=${limit}&search=${searchVal}`;
-      const result = await axios.get(url);
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       setUsers(result.data.users);
       setTotalPages(result.data.total);
       setError();
@@ -62,7 +72,11 @@ export default function Users() {
     }
     try {
       const url = `${API_URL}/api/users`;
-      await axios.post(url, form);
+      await axios.post(url, form, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       setError("User added succesfully");
       fetchUsers();
       resetForm();
@@ -93,7 +107,11 @@ export default function Users() {
     }
     try {
       const url = `${API_URL}/api/users/${editId}`;
-      await axios.patch(url, form);
+      await axios.patch(url, form, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       fetchUsers();
       setEditId();
       resetForm();

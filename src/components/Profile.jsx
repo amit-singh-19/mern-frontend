@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [profile, setProfile] = useState({});
-  const { user } = useContext(AppContext);
+  const { user, setUser } = useContext(AppContext);
   const [error, setError] = useState();
+  const [form, setForm] = useState({});
   const API_URL = import.meta.env.VITE_API_URL;
+  const Navigate = useNavigate();
   const fetchProfile = async () => {
     try {
       setError("Loading...");
@@ -23,23 +26,68 @@ export default function Profile() {
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  const logout = () => {
+    setUser({});
+    Navigate("/");
+  };
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      console.log(profile);
+      const url = `${API_URL}/api/users/${profile._id}/profile`;
+      console.log(url);
+
+      await axios.patch(url, form);
+      fetchProfile();
+      setError("Data saved successfully");
+    } catch (error) {
+      console.log(error);
+      setError("Something went wrong");
+    }
+  };
   return (
     <div>
       <h3>My Profile</h3>
       <p>{error}</p>
+      <button onClick={logout}>Logout</button>
       <p>
-        <input type="text" defaultValue={profile.firstname} />
+        <input
+          name="firstname"
+          type="text"
+          onChange={handleChange}
+          defaultValue={profile.firstname}
+        />
       </p>
       <p>
-        <input type="text" defaultValue={profile.lastname} />
+        <input
+          name="lastname"
+          type="text"
+          onChange={handleChange}
+          defaultValue={profile.lastname}
+        />
       </p>
       <p>
-        <input type="text" defaultValue={profile.email} />
+        <input
+          name="email"
+          type="text"
+          onChange={handleChange}
+          defaultValue={profile.email}
+        />
       </p>
       <p>
-        <input type="text" defaultValue={profile.password} />
+        <input
+          name="password"
+          type="text"
+          onChange={handleChange}
+          defaultValue={profile.password}
+        />
       </p>
-      <button>Update Profile</button>
+      <button onClick={handleSubmit}>Update Profile</button>
     </div>
   );
 }
