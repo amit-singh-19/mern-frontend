@@ -17,6 +17,8 @@ body {
 }
 
 .login-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
   margin: 0 0 1.5rem;
   padding: 0;
   color: rgb(16, 137, 211);

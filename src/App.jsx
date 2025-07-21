@@ -14,6 +14,8 @@ import Footer from "./components/Footer.jsx";
 import Profile from "./components/Profile.jsx"
 import AppContext from "./context/AppContext.js";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
             </Route>
           </Routes>
           <Footer />
+          <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover />
         </BrowserRouter>
       </AppContext.Provider>
     </div>

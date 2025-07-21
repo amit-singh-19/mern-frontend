@@ -8,33 +8,38 @@ export default function Navbar() {
   // console.log(user);
   return (
     <div className="navbar">
-      <div className="logo">
-        <h1>ShopEase</h1>
+      <div className="navbar-left">
+        <Link to="/" className="logo-link">
+          <img src="/images/logo.png" alt="logo" className="logo" />
+        </Link>
       </div>
-      <div className="menu">
-        <div className="list-item">
-          <Link to="/">Home</Link>
-        </div>
-        <div className="list-item">
-          <Link to="/cart">MyCart</Link>
-        </div>
-        <div className="list-item">
-          <Link to="/order">MyOrder</Link>
-        </div>
-        {user.user?.role === "admin" && (
-          <div className="list-item">
-            <Link to="/admin">Admin</Link>
-          </div>
-        )}
 
+      <div className="navbar-center">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        <Link to="/cart" className="nav-link">
+          My Cart
+        </Link>
+        <Link to="/order" className="nav-link">
+          My Orders
+        </Link>
+        {user.user?.role === "admin" && (
+          <Link to="/admin" className="nav-link">
+            Admin
+          </Link>
+        )}
+      </div>
+
+      <div className="navbar-right">
         {user?.token ? (
-          <div className="list-item">
-            <Link to="/profile">Profile</Link>
-          </div>
+          <Link to="/profile" className="nav-link">
+            Profile
+          </Link>
         ) : (
-          <div className="list-item">
-            <Link to="/login">Login</Link>
-          </div>
+          <Link to="/login" className="nav-link btn btn-primary">
+            Login
+          </Link>
         )}
       </div>
     </div>

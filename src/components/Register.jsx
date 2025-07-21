@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const [user, setUser] = useState({});
@@ -12,20 +13,20 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setError("Please wait...")
+      toast.info("Please wait...");
       const url = `${API_URL}/api/users/register`;
       await axios.post(url, user);
-      setError("Data saved successfully");
+      toast.success("Registration successful!");
       Navigate("/login");
     } catch (error) {
       console.log(error);
-      setError(`${error.message}`);
+      toast.error(error.message || "Registration failed");
     }
   };
   return (
     <div className="register-container">
       <h1 className="title">Register</h1>
-      <p className="error">{error}</p>
+      <p>{error}</p>
       <form onSubmit={handleSubmit}>
         <div className="name-field">
           <div className="input">

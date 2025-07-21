@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import AppContext from "../context/AppContext";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const { user, setUser } = useContext(AppContext);
@@ -12,16 +13,16 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      setError("Please wait...");
+      toast.info("Please wait...");
       const url = `${API_URL}/api/users/login`;
       const response = await axios.post(url, user);
       // console.log(response);
       setUser(response.data);
-      setError("Login successfully");
+      toast.success("Login successful!");
       Navigate("/");
     } catch (error) {
       console.log(error);
-      setError(`Error: Something went wrong`);
+      toast.error("Error: Something went wrong");
     }
   };
   return (

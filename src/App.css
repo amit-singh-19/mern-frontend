@@ -9,5 +9,13 @@
 body {
   font-family: "Poppins";
   background-color: #f2f2f2;
-  height: 100vh;
+  min-width: 100vh;
 }
+
+.App-Container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+

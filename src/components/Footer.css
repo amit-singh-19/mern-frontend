@@ -1,0 +1,28 @@
+.footer-container {
+  background-color: #111827; 
+  color: #d1d5db; 
+  /* padding: 3rem 2.5rem 1.5rem; */
+  margin-top: auto; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #374151; 
+  margin-top: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
