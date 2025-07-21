@@ -34,7 +34,11 @@ export default function Product() {
   };
 
   return (
-    <div className="product-grid">
+    <div className="product-container">
+      <div className="title">
+        <h1>Our Products</h1>
+      </div>
+      <div className="product-grid">
       {products &&
         products.map((product) => (
           <div key={product._id} className="product-card">
@@ -60,6 +64,8 @@ export default function Product() {
             </div>
           </div>
         ))}
+    </div>
+
     </div>
   );
 }
