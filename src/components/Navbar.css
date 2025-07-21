@@ -1,11 +1,20 @@
 .navbar {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    gap: 3rem;
     padding-right: 2rem;
     height: 70px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: azure;
+}
+
+.navbar .logo {
+    padding-left: 2rem;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 3rem;
 }
 
 .navbar .list-item{

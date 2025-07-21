@@ -8,30 +8,35 @@ export default function Navbar() {
   // console.log(user);
   return (
     <div className="navbar">
-      <div className="list-item">
-        <Link to="/">Home</Link>
+      <div className="logo">
+        <h1>ShopEase</h1>
       </div>
-      <div className="list-item">
-        <Link to="/cart">MyCart</Link>
-      </div>
-      <div className="list-item">
-        <Link to="/order">MyOrder</Link>
-      </div>
-      {user.user?.role === "admin" && (
+      <div className="menu">
         <div className="list-item">
-          <Link to="/admin">Admin</Link>
+          <Link to="/">Home</Link>
         </div>
-      )}
+        <div className="list-item">
+          <Link to="/cart">MyCart</Link>
+        </div>
+        <div className="list-item">
+          <Link to="/order">MyOrder</Link>
+        </div>
+        {user.user?.role === "admin" && (
+          <div className="list-item">
+            <Link to="/admin">Admin</Link>
+          </div>
+        )}
 
-      {user?.token ?  (
-        <div className="list-item">
-          <Link to="/profile">Profile</Link>
-        </div>
-      ) : (
-        <div className="list-item">
-          <Link to="/login">Login</Link>
-        </div>
-      )}
+        {user?.token ? (
+          <div className="list-item">
+            <Link to="/profile">Profile</Link>
+          </div>
+        ) : (
+          <div className="list-item">
+            <Link to="/login">Login</Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

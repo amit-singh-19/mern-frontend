@@ -14,7 +14,11 @@ export default function Profile() {
     try {
       setError("Loading...");
       const url = `${API_URL}/api/users/${user.user.id}/profile`;
-      const result = await axios.get(url);
+      const result = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       setProfile(result.data);
       setError("");
       console.log(result.data);
@@ -42,7 +46,11 @@ export default function Profile() {
       const url = `${API_URL}/api/users/${profile._id}/profile`;
       console.log(url);
 
-      await axios.patch(url, form);
+      await axios.patch(url, form, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       fetchProfile();
       setError("Data saved successfully");
     } catch (error) {

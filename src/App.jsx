@@ -10,6 +10,7 @@ import Admin from "./components/Admin.jsx";
 import Users from "./components/Users.jsx";
 import Products from "./components/Products.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 import Profile from "./components/Profile.jsx"
 import AppContext from "./context/AppContext.js";
 import "./App.css";
@@ -36,6 +37,7 @@ function App() {
               <Route path="orders" element={<Orders />} />
             </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AppContext.Provider>
     </div>
