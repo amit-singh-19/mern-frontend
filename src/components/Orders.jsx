@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import AppContext from "../context/AppContext";
 import { useFetcher } from "react-router-dom";
 export default function Orders() {
   const [orders, setOrders] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import App, { AppContext } from "../App";
+import AppContext from "../context/AppContext";
 
 export default function Navbar() {
   const { user } = useContext(AppContext);

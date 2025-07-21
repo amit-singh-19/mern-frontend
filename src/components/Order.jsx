@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
-import { AppContext } from "../App";
+import AppContext from "../context/AppContext";
 
 export default function Order() {
   const API_URL = import.meta.env.VITE_API_URL;

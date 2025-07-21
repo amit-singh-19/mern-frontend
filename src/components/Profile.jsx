@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { AppContext } from "../App";
+import AppContext from "../context/AppContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {

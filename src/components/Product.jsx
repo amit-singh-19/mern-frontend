@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { AppContext } from "../App";
+import AppContext from "../context/AppContext";
 import "./Product.css";
 
 export default function Product() {

@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Register from "./components/Register.jsx";
 import Product from "./components/Product.jsx";
@@ -11,9 +11,10 @@ import Users from "./components/Users.jsx";
 import Products from "./components/Products.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Profile from "./components/Profile.jsx"
+import AppContext from "./context/AppContext.js";
 import "./App.css";
 
-export const AppContext = createContext();
+
 function App() {
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({});

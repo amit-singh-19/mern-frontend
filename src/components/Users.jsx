@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import axios from "axios";
-import { AppContext } from "../App";
+import AppContext from "../context/AppContext";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
