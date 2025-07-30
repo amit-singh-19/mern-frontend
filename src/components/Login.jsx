@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 export default function Login() {
   const { user, setUser } = useContext(AppContext);
-  const [error, setError] = useState();
+  const [error] = useState();
   const API_URL = import.meta.env.VITE_API_URL;
   const Navigate = useNavigate();
   const handleLogin = async (e) => {
@@ -22,7 +22,7 @@ export default function Login() {
       Navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error("Error: Something went wrong");
+      toast.error("Something went wrong");
     }
   };
   return (
